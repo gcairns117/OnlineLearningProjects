@@ -34,7 +34,7 @@ while running:
     screen.fill((255, 255, 255))    # takes tuple rgb colour value
 
     # Draw a solid blue circle in the center
-    pygame.draw.circle(screen, (0, 128, 0), (300, 300), 20)    #aruguement for where to draw, rgb value colour, where centre will be, and radius of circle. 
+    pygame.draw.circle(screen, (0, 128, 0), (400, 400), 20)    #aruguement for where to draw, rgb value colour, where centre will be, and radius of circle. 
 
     #Flip the display
     pygame.display.flip()
