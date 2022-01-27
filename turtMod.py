@@ -1,5 +1,5 @@
 """
-https://www.udemy.com/course/mini-python-projects/learn/lecture/27745074#content
+Udemy link : "https://www.udemy.com/course/mini-python-projects/" - Course Created by : Shambhavi Gupta
 https://docs.python.org/3/library/turtle.html
 turtle module - Using Turtle Graphics
 TurtleScreen class defines graphics window for drawing turtles
