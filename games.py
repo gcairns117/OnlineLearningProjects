@@ -1,4 +1,0 @@
-"""
-Pygame module
-"""
-
