@@ -11,6 +11,8 @@ pygame.init()
 screen = pygame.display.set_mode((600, 600))
 
 # Run until the user asks to quit
+#Game Loop (aka Main Loop)
+# Game loop does 3 things: Handle events, update the game state, draws game state to the screen
 running = True
 while running:
 
@@ -28,5 +30,5 @@ while running:
     #Flip the display
     pygame.display.flip()
 
-# once loop is dont - quit
+# once loop is done - quit
 pygame.quit()

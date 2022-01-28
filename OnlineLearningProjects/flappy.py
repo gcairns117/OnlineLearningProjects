@@ -1,10 +1,11 @@
 """
 27/01/22
+Icon attribution link  - <a href="https://www.flaticon.com/free-icons/bird" title="bird icons">Bird icons created by Freepik - Flaticon</a>
 """
-#import pygame moduel 
+# Import pygame moduel 
 import pygame
 
-#importing local constants for direction keys, escape, etc for easier access to key coordinates
+# Importing local constants for direction keys, escape, etc for easier access to key coordinates
 from pygame.locals import (
     K_UP,
     K_DOWN,
@@ -15,29 +16,33 @@ from pygame.locals import (
     QUIT,
 )
 
-#inialise pygame modules
+# Inialise pygame modules - required at start of pygame file
 pygame.init()
 
-#creating the drawing window
-screen = pygame.display.set_mode((800,800))     #screen size set with tuple, 800x800 pixels
+# Creating the Scrren / drawing the display window
+screen = pygame.display.set_mode((800,800))            # screen size set with tuple, 800x800 pixels
+# Setting the Title and Icon
+pygame.display.set_caption("Flappy Imitation")
+icon = pygame.image.load("dove.png")                   # load in dove.png and assing it to 'icon'.
+pygame.display.set_icon(icon)
 
-# Run until the user asks to quit
+# Game Loop (aka Main Loop)
 running = True
 while running:
 
     # Did user click the window close button?
     for event in pygame.event.get():
-        if event.type == pygame.QUIT:
+        if event.type == QUIT:
             running = False
 
-    # Fill the background with white
-    screen.fill((255, 255, 255))    # takes tuple rgb colour value
+    # Fill the background with light blue for sky
+    screen.fill((173, 216, 230))                        # takes tuple rgb colour value
 
-    # Draw a solid blue circle in the center
+    # Draw a solid green circle in the center
     pygame.draw.circle(screen, (0, 128, 0), (400, 400), 20)    #aruguement for where to draw, rgb value colour, where centre will be, and radius of circle. 
 
-    #Flip the display
+    # Flip the display
     pygame.display.flip()
 
-# once loop is dont - quit
+# Once loop is done - quit
 pygame.quit()
