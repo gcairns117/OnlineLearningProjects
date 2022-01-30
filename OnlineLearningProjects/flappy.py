@@ -26,12 +26,11 @@ pygame.init()
 SCREEN_HEIGHT = 720
 SCREEN_WIDTH = 480
 
-# Creating the Screen / drawing the display window - screen size set with tuple, 720x480 pixels
-screen = pygame.display.set_mode((SCREEN_WIDTH,SCREEN_HEIGHT))
+# Creating the Screen / drawing the display window
+screen = pygame.display.set_mode((SCREEN_WIDTH,SCREEN_HEIGHT))            # screen size set with tuple, 720x480 pixels
 # Setting the Title and Icon
 pygame.display.set_caption("Flappy Imitation")
- # load in dove.png and assing it to 'icon'.
-icon = pygame.image.load("dove.png")
+icon = pygame.image.load("dove.png")                   # load in dove.png and assing it to 'icon'.
 pygame.display.set_icon(icon)
 
 # Player object - defined by extedning Sprite class
