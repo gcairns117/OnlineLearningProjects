@@ -1,7 +1,6 @@
 """
 PyGame Documentation - https://www.pygame.org/docs/
 Icon attribution link  - <a href="https://www.flaticon.com/free-icons/bird" title="bird icons">Bird icons created by Freepik - Flaticon</a>
-PyGame Tutorial - https://www.youtube.com/watch?v=FfWpgLFMI7w&t=964s
 PyGame Primer Guide - https://realpython.com/pygame-a-primer/
 """
 
@@ -22,13 +21,13 @@ from pygame.locals import (
 # Inialise pygame modules - required at start of pygame file
 pygame.init()
 
-# Screen dimensions defined as constants
+# Screen dimensions defined as constant variables
 SCREEN_HEIGHT = 720
 SCREEN_WIDTH = 480
 
 # Creating the Screen / drawing the display window
 screen = pygame.display.set_mode((SCREEN_WIDTH,SCREEN_HEIGHT))            # screen size set with tuple, 720x480 pixels
-# Setting the Title and Icon
+# Setting the Screen Title and Icon
 pygame.display.set_caption("Flappy Imitation")
 icon = pygame.image.load("dove.png")                   # load in dove.png and assing it to 'icon'.
 pygame.display.set_icon(icon)
@@ -40,7 +39,29 @@ class Player(pygame.sprite.Sprite):
         self.surf = pygame.Surface((75, 25))
         self.surf.fill((255,255,255))
         self.rect = self.surf.get_rect()
-# Instantiate player
+
+    # Move the sprite based on user keypresses
+    def update(self, pressed_keys):
+        if pressed_keys[K_UP] or pressed_keys[pygame.K_w]:
+            self.rect.move_ip(0, -5)
+        if pressed_keys[K_DOWN] or pressed_keys[pygame.K_s]:
+            self.rect.move_ip(0, 5)
+        if pressed_keys[K_LEFT] or pressed_keys[pygame.K_a]:
+            self.rect.move_ip(-5, 0)
+        if pressed_keys[K_RIGHT] or pressed_keys[pygame.K_d]:
+            self.rect.move_ip(5, 0)
+    
+    # Keep player on screen
+        if self.rect.left < 0:
+            self.rect.left = 0
+        if self.rect.right > SCREEN_WIDTH:
+            self.rect.right = SCREEN_WIDTH
+        if self.rect.top <= 0:
+            self.rect.top = 0
+        if self.rect.bottom >= SCREEN_HEIGHT:
+            self.rect.bottom = SCREEN_HEIGHT
+
+# Instantiate player object
 player = Player()
 
 # Game Loop
@@ -58,21 +79,17 @@ while running:      # Starts the event handler
             # Did user press Escape key? If so, stop the loop
             if event.key == K_ESCAPE:
                 running = False
-
-    # Fill the background with light blue for sky
-    screen.fill((173, 216, 230))                        # takes tuple rgb colour value
-
-    # Create a Surface, pass a tuple containing length and width
-    surf = pygame.Surface((50,50))
-    # Give surface colour
-    surf.fill((0,0,0))
-    rect = surf.get_rect()
     
-    # Draw surface onto the screen
-    # Placed at centre by subtracting width & height of surf from size of screen and then dividing by 2
-    # Required to find centre as blit() places top left corner of surf at location given
+    # Get the set of keys pressed and check for user input
+    pressed_keys = pygame.key.get_pressed()
+    # Update the player sprite location based on user keypresses
+    player.update(pressed_keys)
+
+    # Fill the background with light blue to replicate the sky
+    screen.fill((173, 216, 230))                        # takes tuple rgb colour value
+    
+    # blit() places top left corner of surface or at location given
     screen.blit(player.surf, player.rect)
-    screen.blit(surf, ((SCREEN_WIDTH - surf.get_width())/2,(SCREEN_HEIGHT - player.surf.get_height())/2))
 
     # Flip the display - updates entire screen with everything that has been drawn since last flip
     pygame.display.flip()
