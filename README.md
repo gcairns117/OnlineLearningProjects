@@ -4,7 +4,8 @@ Projects worked on within venv virtual environment and Python version 3.7
 
 Projects and files created in this repo were made while learning alongside online courses and tutorials. Courses/tutorial links present within respective files.
 
+Flappy.py was not made following tutorials on how to recreate Flappy Bird, but produced as a test of learned skills whlie studying other pygame development material.
+
 Files included in repo
-- turtMod: Using Python's turtle module to create a graphic animation
-- game: Covering introduction & basics of pygame module
-- flappy: first attempt at game development with imitation of Flappy Bird using pygame
+- game.py: Covering introduction & basics of pygame module
+- flappy.py: first attempt at game development with an imitation of Flappy Bird using pygame
