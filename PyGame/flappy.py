@@ -123,7 +123,7 @@ class BottomObstacle(pygame.sprite.Sprite):
 class Cloud(pygame.sprite.Sprite):
     def __init__(self):
         super(Cloud, self).__init__()
-        self.surf = pygame.image.load("bigcloud.png").convert_alpha()
+        self.surf = pygame.image.load("cloud.png").convert_alpha()
         # Starting position randomly generated
         self.rect = self.surf.get_rect(
             center=(
