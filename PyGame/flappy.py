@@ -153,6 +153,12 @@ while running:      # Starts the event handler
     for i in all_sprites:
         screen.blit(i.surf, i.rect)
 
+    #Check for collisions between obstacle and player
+    if pygame.sprite.spritecollideany(player, obstacles):
+        # If so, stop the game for 1000 milliseconds and end loop
+        pygame.time.wait(5000)
+        running = False
+
     #draw the getFPS function to coordinates 0,0 (top left)
     screen.blit(getFPS(), (SCREEN_WIDTH-40,0))
 
