@@ -79,7 +79,7 @@ class Player(pygame.sprite.Sprite):
 class Obstacle(pygame.sprite.Sprite):
     def __init__(self):
         super(Obstacle, self).__init__()
-        self.surf = pygame.Surface((50, random.randint(SCREEN_HEIGHT/3, SCREEN_HEIGHT-32)))
+        self.surf = pygame.Surface((50, random.randint(SCREEN_HEIGHT/2+128, SCREEN_HEIGHT+128)))
         self.surf.fill((0,128,0))
         # Rect is assigned random location on the screen on the right side, 20 to 100 pixels away
         # It will be somewhere between the bottom and top of screen
@@ -104,11 +104,11 @@ class Obstacle(pygame.sprite.Sprite):
 class BottomObstacle(pygame.sprite.Sprite):
     def __init__(self):
         super(BottomObstacle, self).__init__()
-        self.surf = pygame.Surface((50, random.randint(SCREEN_HEIGHT/3, SCREEN_HEIGHT-32)))
-        self.surf.fill((255,0,0))
+        self.surf = pygame.Surface((50, random.randint(SCREEN_HEIGHT/2-128, SCREEN_HEIGHT+128)))
+        self.surf.fill((0,128,0))
         self.rect = self.surf.get_rect(
             center=(
-                SCREEN_WIDTH + 50,
+                SCREEN_WIDTH + 200,
                 SCREEN_HEIGHT
             )
         )
@@ -127,13 +127,13 @@ class Cloud(pygame.sprite.Sprite):
         # Starting position randomly generated
         self.rect = self.surf.get_rect(
             center=(
-                random.randint(SCREEN_WIDTH + 40, SCREEN_WIDTH + 45),
+                random.randint(SCREEN_WIDTH + 80, SCREEN_WIDTH + 100),
                 random.randint(0, SCREEN_HEIGHT)
             )
         )
     # Move the cloud based on constant speed & remove cloud once it has passed left edge of screen
     def update(self):
-        self.rect.move_ip(-5, 0)
+        self.rect.move_ip(-1, 0)
         if self.rect.right < 0:
             self.kill()
 
@@ -147,7 +147,7 @@ pygame.time.set_timer(ADDOBSTACLE, 2500)
 
 #Creating custom event for clouds
 ADDCLOUD = pygame.USEREVENT + 2
-pygame.time.set_timer(ADDCLOUD, 1500)
+pygame.time.set_timer(ADDCLOUD, 4000)
 
 # Creating sprite groups to hold all obstacle sprites & another for all sprites
 # Obstacle group to be used for collision dectection & position updates
