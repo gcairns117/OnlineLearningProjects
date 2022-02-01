@@ -2,10 +2,12 @@
 PyGame Documentation - https://www.pygame.org/docs/
 Icon attribution link  - <a href="https://www.flaticon.com/free-icons/bird" title="bird icons">Bird icons created by Freepik - Flaticon</a>
 PyGame Primer Guide - https://realpython.com/pygame-a-primer/
+music credit - 'Flying Penguins' Streambeats (free open source music)
+wingflap.mp3 - pixabay.com
+chirp & game_over mp3 files - freesound.org
 """
 
 # Import pygame moduel 
-from platform import python_branch
 import pygame
 import random
 
@@ -22,16 +24,9 @@ from pygame.locals import (
 
 # Inialise pygame modules - required at start of pygame file
 pygame.init()
+# Setup for sounds. No arguments passed, defaults used.
+pygame.mixer.init()
 
-# Create clock object to set frame rate
-clock = pygame.time.Clock()
-#fps display function
-def getFPS():
-    fps_display = "FPS: " + str(int(clock.get_fps()))
-    font = pygame.font.SysFont("Arial", 12)
-    text = font.render(fps_display, 1, pygame.Color("black"))
-    return text
-    
 # Screen dimensions defined as constant variables
 SCREEN_HEIGHT = 720
 SCREEN_WIDTH = 480
@@ -43,6 +38,24 @@ pygame.display.set_caption("Flappy Imitation")
 icon = pygame.image.load("dove.png")                   # load in dove.png and assing it to 'icon'.
 pygame.display.set_icon(icon)
 
+# Sound
+# Load music, play background music and set volume
+music = pygame.mixer.music
+music.load("music.wav")
+music.play(loops=-1)
+music.set_volume(0.5)
+# Sound effects
+game_over = pygame.mixer.Sound("game_over.wav")
+
+
+# Create clock object to set frame rate
+clock = pygame.time.Clock()
+#fps display function
+def getFPS():
+    fps_display = "FPS: " + str(int(clock.get_fps()))
+    font = pygame.font.SysFont("Arial", 12)
+    text = font.render(fps_display, 1, pygame.Color("black"))
+    return text
 
 # Player object - defined by extedning Sprite class
 class Player(pygame.sprite.Sprite):
@@ -127,7 +140,7 @@ class Cloud(pygame.sprite.Sprite):
         # Starting position randomly generated
         self.rect = self.surf.get_rect(
             center=(
-                random.randint(SCREEN_WIDTH + 80, SCREEN_WIDTH + 100),
+                random.randint(SCREEN_WIDTH + 80, SCREEN_WIDTH + 150),
                 random.randint(0, SCREEN_HEIGHT)
             )
         )
@@ -147,7 +160,7 @@ pygame.time.set_timer(ADDOBSTACLE, 2500)
 
 #Creating custom event for clouds
 ADDCLOUD = pygame.USEREVENT + 2
-pygame.time.set_timer(ADDCLOUD, 4000)
+pygame.time.set_timer(ADDCLOUD, 2000)
 
 # Creating sprite groups to hold all obstacle sprites & another for all sprites
 # Obstacle group to be used for collision dectection & position updates
@@ -208,8 +221,11 @@ while running:      # Starts the event handler
 
     #Check for collisions between obstacle and player
     if pygame.sprite.spritecollideany(player, obstacles):
-        # If so, stop the game for 1000 milliseconds and end loop
-        pygame.time.wait(1000)
+        # If so, stop sounds and music, play game over sound
+        music.stop()
+        game_over.play(1)
+        # And stop the game for 1000 milliseconds and end loop
+        pygame.time.wait(1200)
         running = False
 
     #draw the getFPS function to coordinates 0,0 (top left)
