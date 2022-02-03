@@ -1,7 +1,7 @@
 """
 PyGame Documentation - https://www.pygame.org/docs/
-Icon attribution link  - <a href="https://www.flaticon.com/free-icons/bird" title="bird icons">Bird icons created by Freepik - Flaticon</a>
 PyGame Primer Guide - https://realpython.com/pygame-a-primer/
+Icon attribution link  - <a href="https://www.flaticon.com/free-icons/bird" title="bird icons">Bird icons created by Freepik - Flaticon</a>
 music credit - 'Flying Penguins' Streambeats (free open source music)
 wingflap.mp3 - pixabay.com
 chirp & game_over mp3 files - freesound.org
@@ -218,7 +218,6 @@ while running:      # Starts the event handler
     #blit player after everything else to enure sprite is visible
     screen.blit(player.surf, player.rect)
     
-
     #Check for collisions between obstacle and player
     if pygame.sprite.spritecollideany(player, obstacles):
         # If so, stop sounds and music, play game over sound
