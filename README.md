@@ -1,10 +1,8 @@
-# Online Learning, Courses & Tutorials
+# PyGame Study
 
-Projects worked on within venv virtual environment and Python version 3.7
+Project worked on within the venv virtual environment & Python version 3.7
 
-Projects and files created in this repo were made while learning alongside online courses and tutorials. Courses/tutorial links present within respective files.
-
-Flappy.py was made following tutorials & attempting to take what was learned and apply it towards recreating Flappy Bird.
+Flappy.py was made following the pygame documentation, tutorials, & attempting to take what was learned and apply it towards recreating a mvp of Flappy Bird.
 
 Video showing progression over one week's worth development of flappy.py: https://www.youtube.com/watch?v=K0KKxKuYq1c
 
