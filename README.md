@@ -6,6 +6,4 @@ Flappy.py was made following the pygame documentation, tutorials, & attempting t
 
 Video showing progression over one week's worth development of flappy.py: https://www.youtube.com/watch?v=aT7C6UX9qVI
 
-Files included in repo
-- game.py: Covering introduction & basics of pygame module
 - flappy.py: first attempt at game development with an imitation of Flappy Bird using pygame
